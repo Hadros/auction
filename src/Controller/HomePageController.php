@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Doctrine\DBAL\Connection;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 

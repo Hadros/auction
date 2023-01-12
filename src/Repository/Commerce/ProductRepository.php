@@ -44,7 +44,7 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * @return Product[] Returns an array of Product objects
      */
-    public function findByUser(UserInterface $user): array
+    public function findByUser(User $user): array
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.user = :val')
@@ -53,16 +53,6 @@ class ProductRepository extends ServiceEntityRepository
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
-        ;
-    }
-
-    public function findOneBySomeField($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
         ;
     }
 }

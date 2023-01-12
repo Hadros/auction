@@ -3,9 +3,10 @@
 namespace App\Controller\Commerce;
 
 use App\Entity\Commerce\Product;
+use App\Entity\User\User;
 use App\Form\Commerce\AddProductFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +18,7 @@ class AddProductController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $gavno = 1;
         $product = new Product();
         $form = $this->createForm(AddProductFormType::class, $product);
         $form->handleRequest($request);
@@ -26,7 +28,9 @@ class AddProductController extends AbstractController
             $now = new \DateTime('now');
             $product->setCreated($now);
             $product->setChanged($now);
-            $product->setUser($this->getUser());
+            /** @var User $user */
+            $user = $this->getUser();
+            $product->setUser($user);
             $entityManager->persist($product);
             $entityManager->flush();
 

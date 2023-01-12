@@ -5,7 +5,7 @@ namespace App\Controller\Commerce;
 use App\Entity\Commerce\Product;
 use App\Repository\Commerce\ProductRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
