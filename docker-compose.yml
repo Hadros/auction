@@ -22,9 +22,9 @@ services:
       POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_DB: $DB_NAME
       POSTGRES_USER: $DB_USER
-    volumes:
-    - ./.vol/postgres-init:/docker-entrypoint-initdb.d # Place init file(s) here.
-    - ./.vol/postgresf:/var/lib/postgresql/data # I want to manage volumes manually.
+#    volumes:
+    #- ./.vol/postgres-init:/docker-entrypoint-initdb.d # Place init file(s) here.
+    #- ./.vol/postgresf:/var/lib/postgresql/data # I want to manage volumes manually.
 
   php:
     image: wodby/php:$PHP_TAG
@@ -76,6 +76,7 @@ services:
     
   rabbitmq:
     image: rabbitmq:3.10.7-management
+    container_name: "${PROJECT_NAME}_rabbitmq"
     hostname: auction
     restart: always
     environment:

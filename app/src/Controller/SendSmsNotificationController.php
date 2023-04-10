@@ -15,7 +15,7 @@ class SendSmsNotificationController extends AbstractController
     {
 
         // will cause the SmsNotificationHandler to be called
-        //$bus->dispatch(new SmsNotification('Look! I created a message!'));
+        $bus->dispatch(new SmsNotification('Look! I created a message!'));
 
         // ...
         return new Response('Hi!');
